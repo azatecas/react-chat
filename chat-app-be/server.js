@@ -13,7 +13,7 @@ io.on("connection", (socket) => {
       const newRecipients = recipients.filter((r) => r !== recipient);
       newRecipients.push(id);
       socket.broadcast.to(recipient).emit("receive-message", {
-        recipient: newRecipients,
+        recipients: newRecipients,
         sender: id,
         text,
       });
