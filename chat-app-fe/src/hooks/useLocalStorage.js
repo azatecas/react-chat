@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 
+//use to distinguish localStorage keys
 const PREFIX = "whatsapp-clone-";
 
 export default function useLocalStorage(key, initialValue) {
