@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { Modal, Form, Button } from "react-bootstrap";
-import { Prev } from "react-bootstrap/esm/PageItem";
 import { useContacts } from "../contexts/ContactsProvider";
 import { useConversations } from "../contexts/ConversationProvider";
 
@@ -18,7 +17,7 @@ export default function NewCoversationModal({ closeModal }) {
   const handleCheckboxChange = (contactId) => {
     setSelectedContactIds((prevSelectedContactIds) => {
       if (prevSelectedContactIds.includes(contactId)) {
-        return prevSelectedContactIds.filter((prevId) => contactId === prevId);
+        return prevSelectedContactIds.filter((prevId) => contactId !== prevId);
       } else {
         return [...prevSelectedContactIds, contactId];
       }
