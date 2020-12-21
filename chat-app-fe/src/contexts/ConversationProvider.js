@@ -33,7 +33,7 @@ export function ConversationsProvider({ children, id }) {
           madeChange = true;
           return {
             ...conversation,
-            messages: [conversation.messages, newMessage],
+            messages: [...conversation.messages, newMessage],
           };
         }
         return conversation;
@@ -61,10 +61,21 @@ export function ConversationsProvider({ children, id }) {
       return { id: recipient, name };
     });
 
+    //check to see who sent a message
+    const messages = conversation.messages.map((message) => {
+      const contact = contacts.find((contact) => {
+        return contact.id === message.sender;
+      });
+
+      const name = (contact && contact.name) || message.sender;
+      const fromMe = id === message.sender;
+      return { ...message, senderName: name, fromMe };
+    });
+
     //check if converstaion selected
     const selected = index === selectedConversationIndex;
 
-    return { ...conversation, recipients, selected };
+    return { ...conversation, messages, recipients, selected };
   });
 
   const value = {
