@@ -1,3 +1,3 @@
 # react-chat
-Proof of Concept: React.JS Full-Stack Chat Application.
+Proof of Concept: Full-Stack Chat Application utilizing React.js, NodeJS and Websockets. 
 
